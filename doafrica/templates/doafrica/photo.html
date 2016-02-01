@@ -1,0 +1,61 @@
+{% extends 'doafrica/base.html'%}
+{% block title%}DoAfrica | Home {% endblock title%}
+{% block content%}
+
+<div class="navbar">
+   <div class="navbar md-whiteframe-z1 no-radius green">
+            <!-- brand -->
+            <a class="navbar-brand">
+              
+              <img src="images/logo.png" alt="." style="max-height: 36px; display:none">
+              <span class="hidden-folded m-l inline">DoAfrica</span>
+            </a>
+            <!-- / brand -->
+        </div>
+      
+    </div>
+
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading bg-white">
+        <br>
+          <small class="text-muted"> Complete this field to signup</small>
+        </div>
+        <div class="panel-body">
+        
+            <form name="form" method="post" action="/doafrica/photo" enctype="multipart/form-data">
+            {{ form.non_field_errors }}
+            {% csrf_token %}
+            	 <div class="col-sm-6">
+                    <div class="md-form-group float-label">
+                   		{{ form.photo.errors }}                        
+                        {{ form.photo.label_tag }}
+    					{{ form.photo }}
+                        
+                 	</div>
+                 </div>
+                 <div class="col-sm-6">
+                    <div class="md-form-group float-label">                        
+                        {{ form.id_card.errors }}                        
+                        {{ form.id_card.label_tag }}
+    					{{ form.id_card }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.business_card.errors }}                        
+                        {{ form.business_card.label_tag }}
+    					{{ form.business_card }}
+                    </div>
+                </div>
+                	
+     <button md-ink-ripple type="submit" class="md-btn md-raised green btn-block p-h-md">Sign up</button>
+
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+
+{% endblock content%}

@@ -1,0 +1,32 @@
+{% extends 'doafrica/base.html'%}
+{% block title%}DoAfrica | Login {% endblock title%}
+{% block content%}
+<div class="center-block w-xxl w-auto-xs p-v-md">
+
+        <div class="navbar">
+            <div class="navbar-brand m-t-lg text-center">
+
+                <span class="m-l inline">DoAfrica</span>
+            </div>
+        </div>
+
+        <div class="p-lg panel md-whiteframe-z1 text-color m">
+        <div class="m-b text-sm">
+        <h1>Se connecter</h1>
+
+{% if error %}
+<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+{% endif %}
+
+{% if user.is_authenticated %}
+Vous êtes connecté, {{ user.username }} !
+{% else %}
+<form method="post" action="/doafrica/conlogin">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button md-ink-ripple type="submit" class="md-btn md-raised green btn-block p-h-md">Se connecter</button>
+</form>
+{% endif %}
+
+
+{% endblock content%}

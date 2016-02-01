@@ -1,0 +1,283 @@
+{% extends 'doafrica/base.html'%}
+{% block title%}DoAfrica | Profil {% endblock title%}
+{% block content%}
+<div id="content" class="app-content" role="main">
+    <div class="box">
+          <!-- Content Navbar -->
+    <div class="navbar md-whiteframe-z1 no-radius green">
+      <!-- Open side - Naviation on mobile -->
+      <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+      <!-- / -->
+      <!-- Page title - Bind to $state's title -->
+      <div class="navbar-item pull-left h4">Profile</div>
+      <!-- / -->
+      <!-- Common tools -->
+      <ul class="nav nav-sm navbar-tool pull-right">
+        <li>
+          <a md-ink-ripple ui-toggle-class="show" target="#search">
+            <i class="mdi-action-search i-24"></i>
+          </a>
+        </li>
+
+        
+      </ul>
+      <div class="pull-right" ui-view="navbar"></div>
+      <!-- / -->
+      <!-- Search form -->
+      <div id="search" class="pos-abt w-full h-full green hide">
+        <div class="box">
+          <div class="box-col w-56 text-center">
+            <!-- hide search form -->
+            <a md-ink-ripple class="navbar-item inline"  ui-toggle-class="show" target="#search"><i class="mdi-navigation-arrow-back i-24"></i></a>
+          </div>
+          <div class="box-col v-m">
+            <!-- bind to app.search.content -->
+            <input class="form-control input-lg no-bg no-border" placeholder="Search" ng-model="app.search.content">
+          </div>
+          <div class="box-col w-56 text-center">
+            <a md-ink-ripple class="navbar-item inline"><i class="mdi-av-mic i-24"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- / -->
+    </div>
+    <!-- Content -->
+
+      <div class="box-row">
+        <div class="box-cell">
+          <div class="box-inner padding">
+            
+
+<div class="row row-sm">
+  <div class="col-sm-3">
+    <div class="panel panel-card">
+      <div class="r-t pos-rlt" md-ink-ripple style=" background-size:cover">
+        <div class="p-lg bg-white-overlay text-center r-t">
+          <a href class="w-xs inline">
+            <img src=" " class="img-circle img-responsive">
+          </a>
+          <div class="m-b m-t-sm h2">
+            <span class="">{{user.username}} {{user.last_name}} </span>
+          </div>
+          <a class="btn btn-sm btn-success m-b p-h no-border" href="doafrica/edit_profil">Edit</a>
+          <p>
+            {{donnee.slug}}
+          </p>
+        </div>
+      </div>
+      <div class="list-group no-radius no-border">
+        <a class="list-group-item"  type="button" class="btn btn-primary" >
+          Create an project
+        </a>
+        <a class="list-group-item" href="message.php">
+          <span class="pull-right badge">12</span> Messages
+        </a>
+         <a class="list-group-item">
+          <span class="pull-right badge">12</span> Notifications
+        </a>
+         <a class="list-group-item">
+          <span class="pull-right badge">12</span> Projects
+        </a>
+        <a class="list-group-item" href="/doafrica/association">
+          <span class="pull-right badge">23</span> Associations
+        </a>
+          <a class="list-group-item"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">
+          Premium
+        </a>
+        <a class="list-group-item" href="/doafrica/conlogout">
+          <span class="pull-right badge"></span> Logout
+        </a>
+
+      </div>
+      
+      <div class="p">
+        <p>About</p>
+        <p></p>
+        <div class="m-v">
+          <a class="text-muted" href="http://facebook.com/" target="_blank">
+            <i class="fa ui-icon fa-facebook"></i>
+          </a>
+          <a class="text-muted" href="http://twitter.com/" target="_blank">
+            <i class="fa ui-icon fa-twitter"></i>
+          </a>
+          <a class="text-muted" href="http://linkedin.com/" target="_blank">
+            <i class="fa ui-icon fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col-sm-7">
+
+      <div class="row row-sm" align="center">
+          <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">New Association</button>
+      </div><br/>
+<div class="col-sm-8 col-sm-offset-2">
+      <div class="md-list md-whiteframe-z0 bg-white m-b">
+        <div class="md-list-item">
+          <div class="md-list-item-left">
+            <img src="images/a0.jpg" class="w-full circle">
+          </div>
+          <div class="md-list-item-content">
+            <h3 class="text-md">Brunch this weekend?</h3>
+            <small class="font-thin">Min Li Chan</small>
+          </div>
+        </div>
+          </div>
+</div>
+
+
+
+      <!-- debut classe modale  message-->
+    <div class="row row-sm">
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="exampleModalLabel">New Association</h4>
+            </div>
+            <div class="modal-body">
+              <form name="form" method="post" action="." enctype="multipart/form-data">
+                {{ form.non_field_errors }}
+                {% csrf_token %}
+                <div class="form-group">
+                        {{ form.name.errors }}
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                </div>
+                <div class="form-group">
+                   {{ form.description.errors }}
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                </div>
+
+                <div class="form-group">
+                   {{ form.image.errors }}                        
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                </div>
+                <div class="modal-footer form-group">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-success">create project</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+<!-- Fin classe modale message -->
+
+
+            
+
+
+      </div>
+
+    </div>
+
+  <div class="col-md-2 col-sm-2">
+    <h4 class="m-l">Connected</h4>
+    <ul class="list-group no-bg no-borders pull-in">
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a0.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Joge Lucky</a></div>
+          <small class="text-muted-dk">Art director, Movie Cut</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a1.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Folisise Chosielie</a></div>
+          <small class="text-muted-dk">Musician, Player</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a2.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Aron Gonzalez</a></div>
+          <small class="text-muted-dk">Designer</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a4.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Chris Fox</a></div>
+          <small class="text-muted-dk">Designer, Blogger</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a5.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Mogen Polish</a></div>
+          <small class="text-muted-dk">Writter, Mag Editor</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a6.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Joge Lucky</a></div>
+          <small class="text-muted-dk">Art director, Movie Cut</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a7.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Folisise Chosielie</a></div>
+          <small class="text-muted-dk">Musician, Player</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a8.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Aron Gonzalez</a></div>
+          <small class="text-muted-dk">Designer</small>
+        </div>
+      </li>
+      <li class="list-group-item clearfix">
+        <a herf="" class="pull-left w-40 m-r">
+          <img src="images/a9.jpg" alt="..." class="w-full img-circle">
+        </a>
+        <div class="clear text-ellipsis">
+          <div><a href="">Mogen Polish</a></div>
+          <small class="text-muted-dk">Writter, Mag Editor</small>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+<!--<a md-ink-ripple class="md-btn md-fab md-fab-bottom-right pos-fix green"><i class="mdi-editor-mode-edit i-24"></i></a>-->
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / content -->
+
+
+
+{% endblock content%}

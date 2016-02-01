@@ -1,0 +1,178 @@
+{% extends 'doafrica/base.html'%}
+{% block title%}DoAfrica | Home {% endblock title%}
+{% block content%}
+
+<div class="navbar">
+   <div class="navbar md-whiteframe-z1 no-radius green">
+            <!-- brand -->
+            <a class="navbar-brand">
+              
+              <img src="images/logo.png" alt="." style="max-height: 36px; display:none">
+              <span class="hidden-folded m-l inline">DoAfrica</span>
+            </a>
+            <!-- / brand -->
+        </div>
+      
+    </div>
+<div class="box-row">
+        <div class="box-cell">
+          <div class="box-inner padding">
+            
+
+<div class="row row-sm">
+  <div class="col-sm-4">
+    <div class="panel panel-card">
+      <div class="r-t pos-rlt" md-ink-ripple style="background:url(images/a0.jpg) center center; background-size:cover">
+        <div class="p-lg bg-white-overlay text-center r-t">
+          <a href class="w-xs inline">
+            <img src="images/a0.jpg" class="img-circle img-responsive">
+          </a>
+          <div class="m-b m-t-sm h2">
+            <span class="">{{user.username}}</span>
+          </div>
+         
+          <p>
+            {{user.slug}}
+          </p>
+        </div>
+      </div>
+     <div class="list-group no-radius no-border">
+        <a class="list-group-item">
+          <span class="pull-right badge">12</span> Messages
+        </a>
+         <a class="list-group-item">
+          <span class="pull-right badge">12</span> Notifications
+        </a>
+         <a class="list-group-item">
+          <span class="pull-right badge">12</span> Projects
+        </a>
+        <a class="list-group-item">
+          <span class="pull-right badge">23</span> Associations
+        </a>
+        <a class="list-group-item">
+          <span class="pull-right badge"></span> Logout
+        </a>
+      </div>
+      
+      <div class="p">
+        <p>About</p>
+        <p><?php echo $_SESSION['biography'];?> </p>
+        <div class="m-v">
+          <a class="text-muted">
+            <i class="fa ui-icon fa-facebook"></i>
+          </a>
+          <a class="text-muted">
+            <i class="fa ui-icon fa-twitter"></i>
+          </a>
+          <a class="text-muted">
+            <i class="fa ui-icon fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="col-md-8 b-l bg-white bg-auto">
+      <div class="p-md bg-light lt b-b font-bold">Public profile</div>
+      <form role="form" class="p-md col-md-10 col-md-offset-1" method="post" action="update_profile.php" enctype="multipart/form-data">
+       
+{{ form.non_field_errors }}
+            {% csrf_token %}
+                 <div class="col-sm-6">
+                    <div class="md-form-group float-label">
+                        {{ form.username.errors }}                        
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        
+                    </div>
+                 </div>
+                 <div class="col-sm-6">
+                    <div class="md-form-group float-label">                        
+                        {{ form.last_name.errors }}                        
+                        {{ form.last_name.label_tag }}
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.first_name.errors }}                     
+                        {{ form.first_name.label_tag }}
+                        {{ form.first_name }}
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.email.errors }}                        
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                </div>
+                 <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.country.errors }}                        
+                        {{ form.country.label_tag }}
+                        {{ form.country }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.telephone.errors }}                        
+                        {{ form.telephone.label_tag }}                        
+                        {{ form.telephone }}
+
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="md-form-group">
+                        {{ form.address.errors }}                        
+                        {{ form.address.label_tag }}                        
+                        {{ form.address }}
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.slug.errors }}                        
+                        {{ form.slug.label_tag }}                        
+                        {{ form.slug }}
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.twitter.errors }}                        
+                        {{ form.twitter.label_tag }}                        
+                        {{ form.twitter }}
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.facebook.errors }}                        
+                        {{ form.facebook.label_tag }}                        
+                        {{ form.facebook }}
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="md-form-group">
+                        {{ form.linkedin.errors }}                        
+                        {{ form.linkedin.label_tag }}                        
+                        {{ form.linkedin }}
+
+                    </div>
+                </div>
+              
+    
+        
+        <button type="submit" class="btn btn-success m-t">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock content%}
